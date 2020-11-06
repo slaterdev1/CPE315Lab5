@@ -48,6 +48,7 @@ class CommandHandler
         //System.out.println("accuracy " + accuracy + "% " + 
         //                    "(" + correctPredictions + " correct predictions, "
         //                    + predictions + " predictions)\n");
+
     }
 
     public void dCommand()
