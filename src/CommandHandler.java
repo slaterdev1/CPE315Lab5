@@ -39,6 +39,17 @@ class CommandHandler
 
     }
 
+    public void bCommand()
+    {
+        /* Outputs the results of predictor accuracy */    
+        //double correctPredictions;
+        //double predictions;
+        //double accuracy = (correctPredictions / predictions) * 100;
+        //System.out.println("accuracy " + accuracy + "% " + 
+        //                    "(" + correctPredictions + " correct predictions, "
+        //                    + predictions + " predictions)\n");
+    }
+
     public void dCommand()
     {
         System.out.println(); 
@@ -130,6 +141,10 @@ class CommandHandler
         {
             cCommand();
         }
+        if(cmd.charAt(0) == 'b')
+        {
+            bCommand();
+        } 
         if(cmd.charAt(0) == 'q')
         {
             sim.running = false;
