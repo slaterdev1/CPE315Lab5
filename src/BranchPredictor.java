@@ -5,12 +5,13 @@ public class BranchPredictor {
 
     public static int predictions = 0;
     public static int correctPredictions;
-    public static int[] ghr = new int[8];
+    public static int[] ghr;
     private static int[] states = new int[256];
-    public static int ghrSize;
+    public static int ghrSize = 2;
 
     public static void initialize(int setGhrSize){
         ghrSize = setGhrSize;
+        ghr = new int[ghrSize];
     }
 
     public static boolean predictTaken(){

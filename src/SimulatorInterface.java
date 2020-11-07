@@ -18,9 +18,13 @@ public class SimulatorInterface
     {
         FileParser fp = new FileParser(args);
         fp.run();
-
-        BranchPredictor.initialize(8);
-
+       
+        if(args.length < 3){
+            BranchPredictor.initialize(2);
+        }
+        else if(args.length == 3){
+            BranchPredictor.initialize(Integer.parseInt(args[2]));
+        }
         Scanner cmd_o = getScanner(args);
         if (cmd_o == null){
             System.out.println("Usage: java lab3 filename.asm [scriptFile]");
@@ -48,7 +52,7 @@ public class SimulatorInterface
             scriptMode = false;
             return new Scanner(System.in);
         }
-        else if (args.length == 2) {
+        else if (args.length == 2 || args.length == 3) {
             scriptMode = true;
             try {
                 File file = new File(args[1]);

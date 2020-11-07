@@ -5,6 +5,7 @@ class CommandHandler
     public String cmd = null;
     public String arg0 = null;
     public String arg1 = null;
+    public String arg2 = "2";
     private List<String> args = null;
     private SimulatorInterface sim;
 
@@ -20,6 +21,8 @@ class CommandHandler
             arg0 = args.get(1);
         if(args.size() >= 3)
             arg1 = args.get(2);
+        if(args.size() >= 4)
+            arg2 = args.get(3);
 
     }
 
@@ -45,9 +48,10 @@ class CommandHandler
         double correctPredictions = BranchPredictor.correctPredictions;
         double predictions = BranchPredictor.predictions;
         double accuracy = (correctPredictions / predictions) * 100;
-        System.out.println("accuracy " + accuracy + "% " +
-                            "(" + correctPredictions + " correct predictions, "
-                            + predictions + " predictions)\n");
+        String ac = String.format("%.2f", accuracy);
+        System.out.println("\naccuracy " + ac + "% " +
+                            "(" + (int)correctPredictions + " correct predictions, "
+                            + (int)predictions + " predictions)\n");
     }
 
     public void dCommand()
