@@ -19,7 +19,7 @@ public class SimulatorInterface
         FileParser fp = new FileParser(args);
         fp.run();
 
-        BranchPredictor.initialize(4);
+        BranchPredictor.initialize(8);
 
         Scanner cmd_o = getScanner(args);
         if (cmd_o == null){
