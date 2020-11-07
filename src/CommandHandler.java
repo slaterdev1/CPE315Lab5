@@ -42,13 +42,12 @@ class CommandHandler
     public void bCommand()
     {
         /* Outputs the results of predictor accuracy */    
-        //double correctPredictions;
-        //double predictions;
-        //double accuracy = (correctPredictions / predictions) * 100;
-        //System.out.println("accuracy " + accuracy + "% " + 
-        //                    "(" + correctPredictions + " correct predictions, "
-        //                    + predictions + " predictions)\n");
-
+        double correctPredictions = BranchPredictor.correctPredictions;
+        double predictions = BranchPredictor.predictions;
+        double accuracy = (correctPredictions / predictions) * 100;
+        System.out.println("accuracy " + accuracy + "% " +
+                            "(" + correctPredictions + " correct predictions, "
+                            + predictions + " predictions)\n");
     }
 
     public void dCommand()

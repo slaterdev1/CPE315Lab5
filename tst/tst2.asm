@@ -1,7 +1,7 @@
 # compute fibonacci numbers
 # the sixth number is stored in $v0 when the program completes
 
-addi $a0, $0, 6	# input argument
+addi $a0, $0, 10	# input argument
 addi $sp, $0, 4095	# initialize stack pointer
 jal fibonacci
 j end

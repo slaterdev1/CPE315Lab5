@@ -19,6 +19,8 @@ public class SimulatorInterface
         FileParser fp = new FileParser(args);
         fp.run();
 
+        BranchPredictor.initialize(4);
+
         Scanner cmd_o = getScanner(args);
         if (cmd_o == null){
             System.out.println("Usage: java lab3 filename.asm [scriptFile]");
