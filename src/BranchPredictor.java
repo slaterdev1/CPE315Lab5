@@ -14,23 +14,22 @@ public class BranchPredictor {
     }
 
     public static boolean predictTaken(){
-        printStates();
+        //printStates();
         predictions += 1;
         int ghrVal = getGhrValue();
         boolean prediction = states[ghrVal] >= 2;
-        System.out.println("New Prediction at GHR " + ghrVal + ": " + prediction);
+        //System.out.println("New Prediction at GHR " + ghrVal + ": " + prediction);
         return prediction;
     }
 
     public static void wasTaken(boolean taken){
-        // don't know which of the two following lines should come first
         int ghrVal = getGhrValue();
         int currState = states[ghrVal];
         int addState = currState + (taken ? 1 : -1);
         int clampState = clamp(addState, 0 ,3);
-        System.out.println("state before: " + currState);
+        //System.out.println("state before: " + currState);
         states[ghrVal] = clampState;
-        System.out.println("state after: " + clampState);
+        //System.out.println("state after: " + clampState);
         shiftIn(taken);
     }
 
@@ -39,25 +38,25 @@ public class BranchPredictor {
     }
 
     private static void shiftIn(boolean taken){
-        System.out.println("New Information: " + (taken ? "taken" : "not taken"));
+        //System.out.println("New Information: " + (taken ? "taken" : "not taken"));
         int i = ghrSize - 1;
         while(i != 0){
             ghr[i] = ghr[i - 1];
             i -= 1;
         }
         ghr[0] = taken ? 1 : 0;
-        System.out.println("GHR after shifting in: " + Arrays.toString(ghr));
+        //System.out.println("GHR after shifting in: " + Arrays.toString(ghr));
     }
 
     private static int getGhrValue(){
-        System.out.println("Getting GHR value for " + Arrays.toString(ghr));
+        //System.out.println("Getting GHR value for " + Arrays.toString(ghr));
         int sum = 0;
         int currMult = 1;
         for(int i = 0; i < ghrSize; i+=1){
             sum += currMult * ghr[i];
             currMult *= 2;
         }
-        System.out.println("Resulting GHR value: " + sum);
+        //System.out.println("Resulting GHR value: " + sum);
         return sum;
     }
 
