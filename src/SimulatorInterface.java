@@ -19,11 +19,24 @@ public class SimulatorInterface
         FileParser fp = new FileParser(args);
         fp.run();
        
-        if(args.length < 3){
+        if(args.length == 1){
             BranchPredictor.initialize(2);
         }
+        else if(args.length == 2){
+            if(args[1].equals("2") || args[1].equals("4") || args[1].equals("8"))   
+                BranchPredictor.initialize(Integer.parseInt(args[1]));
+            else
+            {
+                BranchPredictor.initialize(2);
+            }
+        }
         else if(args.length == 3){
-            BranchPredictor.initialize(Integer.parseInt(args[2]));
+            if(args[2].equals("2") || args[2].equals("4") || args[2].equals("8"))   
+                BranchPredictor.initialize(Integer.parseInt(args[2]));
+            else
+            {
+                BranchPredictor.initialize(2);
+            }
         }
         Scanner cmd_o = getScanner(args);
         if (cmd_o == null){
@@ -52,7 +65,24 @@ public class SimulatorInterface
             scriptMode = false;
             return new Scanner(System.in);
         }
-        else if (args.length == 2 || args.length == 3) {
+        else if (args.length == 2) {
+            if(args[1].equals("2") || args[1].equals("4") || args[1].equals("8")){
+                scriptMode = false;
+                return new Scanner(System.in);
+            }
+            else{
+                scriptMode = true;
+            
+                try {
+                    File file = new File(args[1]);
+                    return new Scanner(file);
+                } catch (FileNotFoundException e){
+                    System.out.println("Error creating scanner: " + e);
+                    exit(-1);
+                }
+            }
+        }
+        else if (args.length == 3) {
             scriptMode = true;
             try {
                 File file = new File(args[1]);
